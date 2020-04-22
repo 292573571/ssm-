@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zw.admin.server.dao.NewsDao">
+
+	<sql id="where">
+		<where>
+			<if test="params.id != null and params.id != ''">
+				and id = #{params.id} 
+			</if>
+			<if test="params.title != null and params.title != ''">
+				and title = #{params.title} 
+			</if>
+			<if test="params.content != null and params.content != ''">
+				and content = #{params.content} 
+			</if>
+			<if test="params.create_time != null and params.create_time != ''">
+				and create_time = #{params.createTime} 
+			</if>
+		
+		</where>
+	</sql>
+
+	<select id="count" resultType="int">
+		select count(1) from news t
+		<include refid="where" />
+	</select>
+
+	<select id="list" resultType="News">
+		select * from news t
+		<include refid="where" />
+		${params.orderBy}
+		limit #{offset}, #{limit}
+	</select>
+
+	<update id="update">
+		update news t
+		<set>
+			<if test="title != null">
+				title = #{title}, 
+			</if>
+			<if test="content != null">
+				content = #{content}, 
+			</if>
+
+
+		</set>
+
+		where t.id = #{id}
+	</update>
+
+</mapper>

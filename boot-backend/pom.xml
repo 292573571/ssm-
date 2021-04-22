@@ -15,7 +15,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<shiro.version>1.4.0</shiro.version>
+		<shiro.version>1.7.1</shiro.version>
 		<swagger.version>2.8.0</swagger.version>
 		<google.guava>26.0-jre</google.guava>
 		<fastjson.version>1.2.49</fastjson.version>
